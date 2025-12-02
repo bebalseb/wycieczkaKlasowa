@@ -1,81 +1,120 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <title>Wycieczka Klasowa 2025 – Klasa 4d</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Pico CSS (professional, modern, free) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
     <style>
-        /* Base */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Inter", Arial, sans-serif;
-            background: #f5f7fa;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        /* Hero section */
-        .hero {
-            padding: 120px 30px;
+        header {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            background: linear-gradient(135deg, #6fb1fc, #4364f7);
-            color: white;
         }
-
-        .hero h1 {
-            margin: 0;
-            font-size: 52px;
-            font-weight: 700;
+        header h1 {
+            margin-bottom: 0.3rem;
         }
-
-        .hero h2 {
-            margin: 10px 0 25px;
-            font-size: 28px;
+        header h2 {
+            margin-top: 0;
+            opacity: 0.75;
             font-weight: 400;
-            opacity: 0.9;
         }
-
-        /* Content */
-        .content {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 25px;
-            text-align: center;
+        .file-card {
+            padding: 1.2rem;
+            border-radius: 0.6rem;
+            background: var(--card-background);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.2rem;
         }
-
-        .content p {
-            font-size: 20px;
-            margin-bottom: 40px;
+        /* Light / Dark theme custom card colors */
+        :root[data-theme="light"] {
+            --card-background: #ffffff;
+            --card-shadow: 0 0.3rem 0.9rem rgba(0,0,0,0.08);
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 14px;
+        :root[data-theme="dark"] {
+            --card-background: #1e1e1e;
+            --card-shadow: 0 0.3rem 0.9rem rgba(0,0,0,0.25);
+        }
+        .toggle-container {
+            text-align: right;
+            margin-top: 1rem;
+            margin-right: 1rem;
         }
     </style>
 </head>
+
 <body>
 
-    <!-- HERO -->
-    <section class="hero">
+<!-- DARK MODE TOGGLE -->
+<div class="toggle-container">
+    <label>
+        <input type="checkbox" id="darkToggle">
+        🌙 Tryb ciemny
+    </label>
+</div>
+
+<main class="container">
+
+    <!-- HEADER -->
+    <header>
         <h1>Wycieczka Klasowa 2025</h1>
         <h2>Klasa 4d</h2>
+        <p>Miejsce, gdzie zbieramy wszystkie dokumenty, pliki i informacje dotyczące naszej nadchodzącej wycieczki.</p>
+    </header>
+
+    <!-- FILE SECTION -->
+    <section>
+        <h3>Pliki do pobrania</h3>
+
+        <div class="file-card">
+            <strong>Zgoda na wycieczkę</strong>
+            <p>Oficjalny dokument, który należy podpisać i oddać wychowawcy.</p>
+            <a href="#" class="contrast" role="button">📄 Pobierz PDF</a>
+        </div>
+
+        <div class="file-card">
+            <strong>Lista rzeczy do spakowania</strong>
+            <p>Przygotowana lista, aby nic ważnego nie zostało w domu.</p>
+            <a href="#" class="contrast" role="button">🧳 Pobierz listę</a>
+        </div>
+
+        <div class="file-card">
+            <strong>Plan wyjazdu</strong>
+            <p>Szczegółowy harmonogram wycieczki.</p>
+            <a href="#" class="contrast" role="button">🕒 Pobierz plan</a>
+        </div>
+
+        <div class="file-card">
+            <strong>Mapa miejsca docelowego</strong>
+            <p>Orientacyjna mapa dla uczniów i rodziców.</p>
+            <a href="#" class="contrast" role="button">🗺 Pobierz mapę</a>
+        </div>
+
     </section>
 
-    <!-- CONTENT -->
-    <section class="content">
-        <p>
-            Miejsce, gdzie zbieramy wszystkie dokumenty, pliki i informacje dotyczące naszej nadchodzącej wycieczki.
-        </p>
-    </section>
+</main>
 
-    <footer>
-        © 2025 Wycieczka Klasowa – Klasa 4d
-    </footer>
+<footer class="container">
+    <hr>
+    <p style="text-align:center; opacity:0.7;">© 2025 Wycieczka Klasowa – Klasa 4d</p>
+</footer>
+
+<!-- DARK MODE SCRIPT -->
+<script>
+    const toggle = document.getElementById("darkToggle");
+    const root = document.documentElement;
+
+    toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+            root.setAttribute("data-theme", "dark");
+        } else {
+            root.setAttribute("data-theme", "light");
+        }
+    });
+</script>
 
 </body>
 </html>
