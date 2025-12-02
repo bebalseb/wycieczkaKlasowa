@@ -2,9 +2,10 @@
 <html lang="pl" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <title>Wycieczka Klasowa Wiosna 2026 - Klasa 4d</title>
+    <title>Wycieczka Klasowa Wiosna 2026 – Klasa 4d</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Pico CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
     <style>
@@ -13,34 +14,95 @@
             margin-bottom: 2rem;
             text-align: center;
         }
-        header h1 {
-            margin-bottom: 0.3rem;
+
+        /* Subtle informational text */
+        .subtle-text {
+            font-size: 0.9rem;
+            opacity: 0.6;
         }
-        header h2 {
-            margin-top: 0;
-            opacity: 0.75;
-            font-weight: 400;
-        }
+
+        /* -----------------------------------------
+           CARD STYLE WITH GRADIENT + SHADOWS
+        ------------------------------------------ */
         .file-card {
-            padding: 1.2rem;
-            border-radius: 0.6rem;
-            background: var(--card-background);
+            padding: 1.2rem 1.5rem;
+            border-radius: 0.9rem;
+            border: 1px solid var(--card-border);
+            background: var(--card-gradient);
             box-shadow: var(--card-shadow);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
-        /* Light / Dark theme custom card colors */
+
+        /* Card hover animation */
+        .file-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        /* LIGHT MODE CARD COLORS */
         :root[data-theme="light"] {
-            --card-background: #ffffff;
-            --card-shadow: 0 0.3rem 0.9rem rgba(0,0,0,0.08);
+            --card-gradient: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+            --card-border: #dfe4ec;
+            --card-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+
+            --button-bg: #e9eff7;
+            --button-bg-hover: #d9e3f1;
+            --button-text: #1d2e45;
+            --button-border: #c8d4e2;
         }
+
+        /* DARK MODE CARD COLORS */
         :root[data-theme="dark"] {
-            --card-background: #1e1e1e;
-            --card-shadow: 0 0.3rem 0.9rem rgba(0,0,0,0.25);
+            --card-gradient: linear-gradient(180deg, #262626 0%, #1f1f1f 100%);
+            --card-border: #33363a;
+            --card-shadow: 0 4px 14px rgba(0,0,0,0.5);
+            --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.7);
+
+            --button-bg: #2f3a45;
+            --button-bg-hover: #3c4955;
+            --button-text: #e4eaf0;
+            --button-border: #4a5866;
         }
+
+        /* -----------------------------------------
+           BUTTON STYLE + ANIMATIONS
+        ------------------------------------------ */
+        .button-soft {
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: 1px solid var(--button-border);
+            padding: 0.55rem 1.1rem;
+            border-radius: 0.45rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+            text-decoration: none;
+        }
+
+        /* Animated button hover */
+        .button-soft:hover {
+            background: var(--button-bg-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+
         .toggle-container {
             text-align: right;
             margin-top: 1rem;
             margin-right: 1rem;
+        }
+        blockquote.small-info {
+            font-size: 0.82rem;
+            line-height: 0.8;
+            opacity: 0.85;
+            padding: 0.4rem 0.4rem;
         }
     </style>
 </head>
@@ -61,22 +123,23 @@
     <header>
         <h2>Wycieczka Klasowa Wiosna 2026 – Klasa 4d</h2>
         <h3>Klasa 4d</h3>
-        <p>Mała pomoc: miejsce, gdzie zbieramy wszystkie dokumenty, pliki i informacje dotyczące planowanej wiosennej wycieczki.</p>
+        <p class="subtle-text">Mała pomoc: miejsce, gdzie zbieramy wszystkie dokumenty, pliki i informacje dotyczące planowanej wiosennej wycieczki.</p>
     </header>
 
     <!-- FILE SECTION -->
     <section>
         <h3>Pliki do pobrania</h3>
-        <p>Poniżej linki do spakowanych plików z ofertami wycieczek.</p>
-        <p>Pliki zabezpieczone hasłem.</p>
-        <p>O hasło pytaj na WhatsAppie :-)</p>
+        <blockquote class="small-info">
+            <p class="subtle-text">Poniżej linki do spakowanych plików z ofertami wycieczek.</p>
+            <p class="subtle-text">Pliki zabezpieczone hasłem.</p>
+            <p class="subtle-text">O hasło pytaj na WhatsAppie :-)</p>
+        </blockquote>
 
         <!-- GRUDZIEŃ -->
         <div class="file-card">
             <strong>Oferty z grudnia 2025</strong>
             <a href="https://raw.githubusercontent.com/bebalseb/wycieczkaklasowa/main/wycieczki_oferty_z_grudnia.zip"
-               class="contrast"
-               role="button"
+               class="button-soft"
                download>
                📦 Pobierz ZIP
             </a>
@@ -86,8 +149,7 @@
         <div class="file-card">
             <strong>Oferty z listopada 2025</strong>
             <a href="https://raw.githubusercontent.com/bebalseb/wycieczkaklasowa/main/wycieczki_oferty_z_listopada.zip"
-               class="contrast"
-               role="button"
+               class="button-soft"
                download>
                📦 Pobierz ZIP
             </a>
@@ -99,7 +161,7 @@
 
 <footer class="container">
     <hr>
-    <p style="text-align:center; opacity:0.7;">© 2026 Wycieczka Klasowa – Klasa 4d</p>
+    <p style="text-align:center; opacity:0.7;">© 2025-2026 Wycieczka Klasowa – Klasa 4d</p>
 </footer>
 
 <!-- DARK MODE SCRIPT -->
@@ -107,12 +169,16 @@
     const toggle = document.getElementById("darkToggle");
     const root = document.documentElement;
 
+    const saved = localStorage.getItem("theme");
+    if (saved) {
+        root.setAttribute("data-theme", saved);
+        toggle.checked = saved === "dark";
+    }
+
     toggle.addEventListener("change", () => {
-        if (toggle.checked) {
-            root.setAttribute("data-theme", "dark");
-        } else {
-            root.setAttribute("data-theme", "light");
-        }
+        const theme = toggle.checked ? "dark" : "light";
+        root.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
     });
 </script>
 
